@@ -1,0 +1,21 @@
+description: Ultralytics best2 model trained on /content/Waste-Classification-KKN-1/data.yaml
+author: Ultralytics
+date: '2026-01-17T07:23:05.024942'
+version: 8.4.5
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 512
+- 512
+names:
+  0: Organik
+  1: Anorganik
+args:
+  batch: 1
+  half: false
+  int8: false
+  nms: false
+channels: 3

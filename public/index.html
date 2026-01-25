@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-SORTER KKN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/header.png?v=1" alt="header KKN" class="header-logo"/>
+            <h1>AI-SORTER</h1>
+            <p id="description">Pilah Sampah Jadi Mudah dengan AI</p>
+        </div>
+
+        <div class="controls">
+            <button id="loadModelBtn" disabled>1. Muat Model</button>
+            <button id="startWebcamBtn" disabled>2. Mulai Kamera</button>
+            <button id="stopWebcamBtn">Stop</button>
+        </div>
+
+        <p id="error-message" class="error"></p>
+        
+        <div class="video-container">
+            <button id="flipCameraBtn" disabled class="flip-camera-button">Flip Kamera</button>
+            <video id="videoFeed" autoplay playsinline muted controlsList="nodownload nofullscreen noremoteplayback" class="absolute w-full h-full object-cover"></video>
+            <canvas id="detectionCanvas"></canvas>
+            <div id="placeholder-instructions" class="video-placeholder">
+                <h3>Langkah-langkah Memulai Program</h3>
+                <ol>
+                    <li>Muat model AI dengan tombol "1. Muat Model".</li>
+                    <li>Mulai kamera Anda dengan tombol "2. Mulai Kamera".</li>
+                    <li>Arahkan kamera ke objek untuk deteksi sampah.</li>
+                </ol>
+                <ol>Deteksi akan lebih akurat dengan latar belakang polos</ol>
+            </div>
+            <div id="fpsDisplay" class="fps-display"></div>
+        </div>
+
+        <div class="detection-results">
+            <h2>Hasil Deteksi:</h2>
+            <div id="detectionList">
+                <p class="no-detection-message">Belum ada sampah terdeteksi...</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <footer>
+        <p class="made-by-text">Made by:</p>
+        <div class="footer-content">
+            <img src="/logo_kkn.png" alt="Logo KKN" class="footer-logo"/>
+            <div class="footer-text-group">
+                <p id="footer-KKNT">KKN 115 Tematik perubahan Iklim</p>
+                <p id="footer-Kelurahan">Tamalanrea Jaya</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+</body>
+</html>
