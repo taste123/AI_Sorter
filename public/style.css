@@ -30,7 +30,7 @@ body {
 
 .header-logo {
     height: auto; /* Memastikan tinggi menyesuaikan proporsional */
-    max-width: 95%; /* Memastikan gambar tidak melebihi lebar induknya */
+    max-width: 100%; /* Memastikan gambar tidak melebihi lebar induknya */
     margin-right: 0rem;
     display: block; /* Mengembalikan ke display block agar mudah ditengahkan */
     margin: 1rem auto 0 auto; /* Menengahkan gambar dan menambahkan margin atas */
@@ -102,15 +102,6 @@ button:disabled {
     background-color: #bc0b0b;
 }
 
-#flipCameraBtn {
-    background-color: #0b78f5; /* bg-amber-500, warna oranye */
-}
-
-#flipCameraBtn:hover {
-    background-color: #065bbb; /* bg-amber-500, warna oranye */
-}
-
-
 .error {
     color: #ef4444; /* text-red-500 */
     margin-bottom: 0.5rem;
@@ -122,23 +113,9 @@ button:disabled {
     overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-2xl */
     background-color: #000;
-    width: 75%;
+    width: 85%;
     max-width: 32rem; /* max-w-md */
     aspect-ratio: 1/1;
-}
-
-.flip-camera-button {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 20; /* Pastikan tombol berada di atas video dan kanvas */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparan */
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    display: none; 
 }
 
 .flip-camera-button:hover {
@@ -199,7 +176,7 @@ button:disabled {
 
 .detection-results {
     margin-top: 1.5rem;
-    width: 70%;
+    width: 80%;
     max-width: 32rem; /* max-w-md */
     background-color: #093b1e;
     padding: 1rem;
@@ -279,7 +256,7 @@ footer {
 }
 
 .footer-logo {
-    height: 120px; 
+    height: 100px; 
     width: auto;
     margin-right: 0rem;
 }

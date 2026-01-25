@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const fpsDisplay = document.getElementById('fpsDisplay');
     const detectionList = document.getElementById('detectionList');
     const placeholderInstructions = document.getElementById('placeholder-instructions');
-    const flipCameraBtn = document.getElementById('flipCameraBtn'); // Pindahkan ini ke sini
 
     let model = null;
     let loading = false;
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastFpsTimeRef = Date.now();
     let fpsCounterRef = 0;
     let fps = 0;
-    let currentFacingMode = 'environment'; // Default ke kamera belakang
 
     const CLASS_NAMES = ['Organik', 'Anorganik'];
 
@@ -27,12 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
             videoRef.style.display = 'block';
             canvasRef.style.display = 'block';
             placeholderInstructions.style.display = 'none';
-            flipCameraBtn.style.display = 'block'; // Tampilkan tombol flip saat streaming
         } else {
             videoRef.style.display = 'none';
             canvasRef.style.display = 'none';
             placeholderInstructions.style.display = 'flex'; /* Menggunakan flex untuk menengahkan konten */
-            flipCameraBtn.style.display = 'none'; // Sembunyikan tombol flip saat tidak streaming
         }
     };
 
@@ -41,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadModelBtn.disabled = loading || !!model;
         startWebcamBtn.disabled = !model || isStreaming;
         stopWebcamBtn.disabled = !isStreaming;
-        // flipCameraBtn.disabled = !isStreaming; // Tidak perlu disabled di sini, karena sudah diatur display none/block
 
         if (model) {
             loadModelBtn.textContent = 'Model Siap ✓';
@@ -198,12 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    
     const startWebcam = async () => {
         errorMessage.textContent = '';
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: currentFacingMode, width: 640, height: 480 }, // Gunakan currentFacingMode
+                video: { facingMode: 'environment', width: 640, height: 480 }, // Default ke kamera belakang
                 audio: false,
             });
             if (videoRef) {
@@ -240,23 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ctx) ctx.clearRect(0, 0, canvasRef.width, canvasRef.height);
     };
 
-    const flipCamera = async () => {
-        if (!isStreaming) return; // Hanya flip jika sedang streaming
-
-        stopWebcam(); // Hentikan webcam saat ini
-
-        // Balik mode kamera
-        currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
-        
-        // Coba mulai webcam lagi dengan mode baru
-        await startWebcam();
-    };
-
     // Event Listeners
     loadModelBtn.addEventListener('click', loadModel);
     startWebcamBtn.addEventListener('click', startWebcam);
     stopWebcamBtn.addEventListener('click', stopWebcam);
-    flipCameraBtn.addEventListener('click', flipCamera); // Pindahkan ini ke sini juga
 
     // Initial state update
     updateButtonStates();
