@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Model loaded!');
         } catch (err) {
             console.error('Error loading model:', err);
-            errorMessage.textContent = 'Gagal memuat model. Pastikan file ada di /public/model/best2_web_model/';
+            errorMessage.textContent = 'Gagal memuat model, pastikan perangkat terhubung ke internet';
         } finally {
             loading = false;
             updateButtonStates();
